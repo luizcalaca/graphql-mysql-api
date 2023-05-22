@@ -1,0 +1,9 @@
+query ExampleQuery {
+  autores {
+    id
+    nome
+    livros {
+      titulo
+    }
+  }
+}
