@@ -1,12 +1,10 @@
-const dbConfig = require('../utils/dbConfig');
-const mysql = require('mysql2/promise');
+const connection = require('../utils/dbConfig');
 
 // Resolvers das queries do GraphQL
 const resolvers = {
     Query: {
       autores: async () => {
         try {
-          const connection = await mysql.createConnection(dbConfig);
           const [rows] = await connection.query(
             'SELECT a.id, a.nome, b.id AS livro_id, b.titulo, b.ano_publicacao FROM autores a INNER JOIN autores_livros al ON a.id = al.autor_id INNER JOIN livros b ON al.livro_id = b.id'
           );

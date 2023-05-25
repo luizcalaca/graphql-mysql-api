@@ -1,10 +1,14 @@
-// Configuração da conexão com o banco de dados MySQL
+const mysql = require('mysql2/promise');
+
 const dbConfig = {
-    port: 3306,
-    user: 'root',
-    password: '',
+    host:'127.0.0.1',
+    port: '3306',
+    user: 'calaca',
+    password: 'calaca',
     database: 'mydatabase',
 };
 
-module.exports = dbConfig;
+const connection = await mysql.createConnection(dbConfig);
+
+module.exports = connection;
 
